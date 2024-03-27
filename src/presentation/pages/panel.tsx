@@ -15,7 +15,7 @@ export default function Panel(): React.JSX.Element {
                 src="./original.image.png"
                 alt="original"
             />
-            <Grid container spacing={2} columns={16}>
+            <Grid container spacing={2} columns={16} className={styles.wrapperActions}>
                 <Grid item xs={8}>
                     <div className={styles.actionsBox}>
                         <ActionButton title="P" />

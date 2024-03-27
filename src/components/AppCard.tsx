@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Card from '@mui/material/Card';
-import { customizer } from '../theme/customizer';
+import customizer from '../theme/customizer';
 
 type Props = {
     children: JSX.Element | JSX.Element[];

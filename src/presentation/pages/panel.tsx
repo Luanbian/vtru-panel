@@ -37,7 +37,6 @@ export default function Panel(): React.JSX.Element {
                     <section className={styles.rightSection}>
                         <Typography variant="h1">My NFT</Typography>
                         <div className={styles.creator}>
-                            {/* TODO Component Avatar with image or two first letters of user */}
                             <Avatar />
                             <Typography variant="h6" style={{ textDecoration: 'underline', textIndent: 8, alignContent: 'center' }}>
                             @Mike

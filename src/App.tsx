@@ -1,9 +1,13 @@
 import React from 'react';
+import makePanel from './core/factory/panel.factory';
 
 function App(): React.JSX.Element {
-  return (
-    <p>Hello world</p>
-  );
+    const props = {};
+    return (
+        <>
+            {makePanel(props)}
+        </>
+    );
 }
 
 export default App;

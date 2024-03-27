@@ -21,5 +21,8 @@ module.exports = {
       'warn',
       { allowConstantExport: true },
     ],
+    "indent": ["error", 4],
+    "@typescript-eslint/indent": "off",
+    "react/jsx-indent": "off"
   },
 }

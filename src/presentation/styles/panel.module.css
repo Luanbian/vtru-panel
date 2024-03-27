@@ -14,5 +14,10 @@
 .actionsBox {
     display: flex;
     gap: 15px;
-    margin-left: 5%;
+}
+
+.panelImage {
+    display: block;
+    width: 400px;
+    height: 350px;
 }

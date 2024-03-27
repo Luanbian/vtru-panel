@@ -19,6 +19,11 @@ export default function Panel(): React.JSX.Element {
                 <ActionButton title="Bi" />
                 <ActionButton title="BV" />
             </div>
+            <img
+                className={styles.panelImage}
+                src="./buy.panel.jpg"
+                alt="buy panel"
+            />
         </main>
     );
 }

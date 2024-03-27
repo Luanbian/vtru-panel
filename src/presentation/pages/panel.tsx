@@ -1,4 +1,5 @@
 import React from 'react';
+import { Grid, Typography } from '@mui/material';
 import Header from '../components/Header';
 
 import styles from '../styles/panel.module.css';
@@ -14,8 +15,8 @@ export default function Panel(): React.JSX.Element {
                 src="./original.image.png"
                 alt="original"
             />
-            <section className={styles.wrapperActions}>
-                <div>
+            <Grid container spacing={2} columns={16}>
+                <Grid item xs={8}>
                     <div className={styles.actionsBox}>
                         <ActionButton title="P" />
                         <ActionButton title="O" />
@@ -27,20 +28,22 @@ export default function Panel(): React.JSX.Element {
                         src="./buy.panel.jpg"
                         alt="buy panel"
                     />
-                </div>
-                <div>
-                    <h2>Title</h2>
-                    <div className={styles.creator}>
-                        <span>🟣</span>
-                        <h5 style={{ textDecoration: 'underline' }}>
+                </Grid>
+                <Grid item xs={8}>
+                    <section className={styles.rightSection}>
+                        <Typography variant="h1">Title</Typography>
+                        <div className={styles.creator}>
+                            <span>🟣</span>
+                            <Typography variant="h6" style={{ textDecoration: 'underline', textIndent: 8 }}>
                             @Creator
-                        </h5>
-                    </div>
-                    <h2>Description</h2>
-                    <MetadataSection title="Meta 1" labels={['oi', 'olá']} />
-                    <MetadataSection title="Meta 2" labels={['oi', 'olá']} />
-                </div>
-            </section>
+                            </Typography>
+                        </div>
+                        <Typography variant="h6" marginBottom={20}>Description</Typography>
+                        <MetadataSection title="Metadata Section 1" labels={['Field label', 'Field label']} />
+                        <MetadataSection title="Metadata Section 2" labels={['Field label', 'Field label']} />
+                    </section>
+                </Grid>
+            </Grid>
         </main>
     );
 }

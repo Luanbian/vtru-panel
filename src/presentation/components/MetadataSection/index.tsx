@@ -1,3 +1,4 @@
+import { Typography } from '@mui/material';
 import React from 'react';
 
 type MetadataSectionProps = {
@@ -9,10 +10,10 @@ export default function MetadataSection({ title, labels }: MetadataSectionProps)
 : React.JSX.Element {
     return (
         <>
-            <h2>{title}</h2>
+            <Typography variant="h5">{title}</Typography>
             {labels.map((item, index) => (
                 <div key={index}>
-                    <h3>{item}</h3>
+                    <p>{item}</p>
                 </div>
             ))}
         </>

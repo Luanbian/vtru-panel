@@ -1,6 +1,18 @@
+.main {
+   display: flex;
+   flex-direction: column;
+   gap: 40px
+}
+
 .originalImage{
     display: block;
     margin: 0 auto;
     width: 300px;
     height: 350px;
+}
+
+.actionsBox {
+    display: flex;
+    gap: 15px;
+    margin-left: 5%;
 }

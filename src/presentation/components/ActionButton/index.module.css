@@ -1,0 +1,7 @@
+.main {
+    color: black;
+    box-shadow: 1px 1px 1px gray;
+    width: 45px;
+    height: 45px;
+    font-size: medium;
+}

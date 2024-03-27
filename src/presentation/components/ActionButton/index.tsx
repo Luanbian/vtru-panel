@@ -1,13 +1,17 @@
 import React from 'react';
-
+import { Button } from '@mui/material';
 import styles from './index.module.css';
 
 type ActionButtonProps = {
-    title: string
+    title: string;
 };
 
-export default function ActionButton({ title }: ActionButtonProps): React.JSX.Element {
+export default function ActionButton({
+    title,
+}: ActionButtonProps): React.JSX.Element {
     return (
-        <button className={styles.main} type="button">{title}</button>
+        <Button className={styles.main} type="button">
+            {title}
+        </Button>
     );
 }

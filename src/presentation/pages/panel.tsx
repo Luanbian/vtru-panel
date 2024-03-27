@@ -3,6 +3,7 @@ import Header from '../components/Header';
 
 import styles from '../styles/panel.module.css';
 import ActionButton from '../components/ActionButton';
+import MetadataSection from '../components/MetadataSection';
 
 export default function Panel(): React.JSX.Element {
     return (
@@ -13,7 +14,6 @@ export default function Panel(): React.JSX.Element {
                 src="./original.image.png"
                 alt="original"
             />
-
             <section className={styles.wrapperActions}>
                 <div>
                     <div className={styles.actionsBox}>
@@ -28,7 +28,6 @@ export default function Panel(): React.JSX.Element {
                         alt="buy panel"
                     />
                 </div>
-
                 <div>
                     <h2>Title</h2>
                     <div className={styles.creator}>
@@ -38,6 +37,8 @@ export default function Panel(): React.JSX.Element {
                         </h5>
                     </div>
                     <h2>Description</h2>
+                    <MetadataSection title="Meta 1" labels={['oi', 'olá']} />
+                    <MetadataSection title="Meta 2" labels={['oi', 'olá']} />
                 </div>
             </section>
         </main>

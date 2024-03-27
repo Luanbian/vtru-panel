@@ -10,7 +10,11 @@ export default function MetadataSection({ title, labels }: MetadataSectionProps)
     return (
         <>
             <h2>{title}</h2>
-            <h3>{labels ? labels[0] : ''}</h3>
+            {labels.map((item, index) => (
+                <div key={index}>
+                    <h3>{item}</h3>
+                </div>
+            ))}
         </>
     );
 }

@@ -24,6 +24,14 @@ export default function Panel(): React.JSX.Element {
                 src="./buy.panel.jpg"
                 alt="buy panel"
             />
+            <div>
+                <h2>Title</h2>
+                <div className={styles.creator}>
+                    <span>🟣</span>
+                    <h5 style={{ textDecoration: 'underline' }}>@Creator</h5>
+                </div>
+                <h2>Description</h2>
+            </div>
         </main>
     );
 }

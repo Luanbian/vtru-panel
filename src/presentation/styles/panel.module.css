@@ -21,3 +21,8 @@
     width: 400px;
     height: 350px;
 }
+
+.creator {
+    display: flex;
+    flex-direction: row;
+}

@@ -1,9 +1,13 @@
 import { Typography } from '@mui/material';
 import React from 'react';
+import { Icontext } from '../../../domain/entitties/context';
+import { Icreators } from '../../../domain/entitties/creators';
+import { Itaxonomy } from '../../../domain/entitties/taxonomy';
+import { Iprovenance } from '../../../domain/entitties/provenance';
 
 type MetadataSectionProps = {
     title: string
-    labels: string[]
+    labels: Icontext | Icreators | Itaxonomy | Iprovenance
 };
 
 export default function MetadataSection({ title, labels }: MetadataSectionProps)
@@ -11,11 +15,7 @@ export default function MetadataSection({ title, labels }: MetadataSectionProps)
     return (
         <>
             <Typography variant="h5">{title}</Typography>
-            {labels.map((item, index) => (
-                <div key={index}>
-                    <p>{item}</p>
-                </div>
-            ))}
+            <p>{JSON.stringify(labels)}</p>
         </>
     );
 }

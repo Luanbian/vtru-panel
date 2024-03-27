@@ -8,6 +8,8 @@ import Avatar from '../components/Avatar';
 
 import styles from '../styles/panel.module.css';
 
+import json from '../../../a.json';
+
 export default function Panel(): React.JSX.Element {
     return (
         <main className={styles.main}>
@@ -49,8 +51,10 @@ export default function Panel(): React.JSX.Element {
                             atae? Aliquam sequi beatae
                             voluptatum at.
                         </p>
-                        <MetadataSection title="Metadata Section 1" labels={['Field label', 'Field label']} />
-                        <MetadataSection title="Metadata Section 2" labels={['Field label', 'Field label']} />
+                        <MetadataSection title="Context" labels={json.context} />
+                        <MetadataSection title="Taxonomy" labels={json.taxonomy} />
+                        <MetadataSection title="Creators" labels={json.creators} />
+                        <MetadataSection title="Provenance" labels={json.provenance} />
                     </section>
                 </Grid>
             </Grid>

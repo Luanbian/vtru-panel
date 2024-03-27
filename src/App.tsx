@@ -35,7 +35,12 @@ function ProviderModernize({ children }: ProviderModernizeProps) {
 function App(): React.JSX.Element {
     return (
         <ProviderModernize>
-            <Container>{makePanel({})}</Container>
+            <Container sx={{
+                paddingBottom: '2rem',
+            }}
+            >
+                {makePanel({})}
+            </Container>
         </ProviderModernize>
     );
 }

@@ -1,10 +1,10 @@
 .main {
-   display: flex;
-   flex-direction: column;
-   gap: 40px
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
 }
 
-.originalImage{
+.originalImage {
     display: block;
     margin: 0 auto;
     width: 300px;
@@ -25,4 +25,16 @@
 .creator {
     display: flex;
     flex-direction: row;
+}
+
+.wrapperActions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+@media screen and (max-width: 768px) {
+    .wrapperActions {
+        display: flex;
+        flex-direction: column;
+    }
 }

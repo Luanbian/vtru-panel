@@ -13,25 +13,33 @@ export default function Panel(): React.JSX.Element {
                 src="./original.image.png"
                 alt="original"
             />
-            <div className={styles.actionsBox}>
-                <ActionButton title="P" />
-                <ActionButton title="O" />
-                <ActionButton title="Bi" />
-                <ActionButton title="BV" />
-            </div>
-            <img
-                className={styles.panelImage}
-                src="./buy.panel.jpg"
-                alt="buy panel"
-            />
-            <div>
-                <h2>Title</h2>
-                <div className={styles.creator}>
-                    <span>🟣</span>
-                    <h5 style={{ textDecoration: 'underline' }}>@Creator</h5>
+
+            <section className={styles.wrapperActions}>
+                <div>
+                    <div className={styles.actionsBox}>
+                        <ActionButton title="P" />
+                        <ActionButton title="O" />
+                        <ActionButton title="Bi" />
+                        <ActionButton title="BV" />
+                    </div>
+                    <img
+                        className={styles.panelImage}
+                        src="./buy.panel.jpg"
+                        alt="buy panel"
+                    />
                 </div>
-                <h2>Description</h2>
-            </div>
+
+                <div>
+                    <h2>Title</h2>
+                    <div className={styles.creator}>
+                        <span>🟣</span>
+                        <h5 style={{ textDecoration: 'underline' }}>
+                            @Creator
+                        </h5>
+                    </div>
+                    <h2>Description</h2>
+                </div>
+            </section>
         </main>
     );
 }

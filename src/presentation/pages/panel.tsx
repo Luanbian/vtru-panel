@@ -1,10 +1,12 @@
 import React from 'react';
 import { Grid, Typography } from '@mui/material';
-import Header from '../components/Header';
 
-import styles from '../styles/panel.module.css';
+import Header from '../components/Header';
 import ActionButton from '../components/ActionButton';
 import MetadataSection from '../components/MetadataSection';
+import Avatar from '../components/Avatar';
+
+import styles from '../styles/panel.module.css';
 
 export default function Panel(): React.JSX.Element {
     return (
@@ -12,7 +14,7 @@ export default function Panel(): React.JSX.Element {
             <Header />
             <img
                 className={styles.originalImage}
-                src="./original.image.png"
+                src="https://wallpapers.com/images/hd/nft-pictures-s01o3iv3xhglpfzl.jpg"
                 alt="original"
             />
             <Grid container spacing={2}>
@@ -31,14 +33,22 @@ export default function Panel(): React.JSX.Element {
                 </Grid>
                 <Grid item xs={12} sm={6}>
                     <section className={styles.rightSection}>
-                        <Typography variant="h1">Title</Typography>
+                        <Typography variant="h1">My NFT</Typography>
                         <div className={styles.creator}>
-                            <span>🟣</span>
+                            {/* TODO Component Avatar with image or two first letters of user */}
+                            <Avatar />
                             <Typography variant="h6" style={{ textDecoration: 'underline', textIndent: 8 }}>
-                            @Creator
+                            @Mike
                             </Typography>
                         </div>
-                        <Typography variant="h6" marginBottom={20}>Description</Typography>
+                        <Typography variant="h6">Description</Typography>
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing el
+                            it. Quo nihil consectetur odit dolor quasi pariatur! Fugit doloremque
+                            voluptates, in delectus ipsam laborum ad non be
+                            atae? Aliquam sequi beatae
+                            voluptatum at.
+                        </p>
                         <MetadataSection title="Metadata Section 1" labels={['Field label', 'Field label']} />
                         <MetadataSection title="Metadata Section 2" labels={['Field label', 'Field label']} />
                     </section>

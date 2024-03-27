@@ -37,7 +37,7 @@ export default function Panel(): React.JSX.Element {
                         <div className={styles.creator}>
                             {/* TODO Component Avatar with image or two first letters of user */}
                             <Avatar />
-                            <Typography variant="h6" style={{ textDecoration: 'underline', textIndent: 8 }}>
+                            <Typography variant="h6" style={{ textDecoration: 'underline', textIndent: 8, alignContent: 'center' }}>
                             @Mike
                             </Typography>
                         </div>

@@ -7,7 +7,7 @@ type Props = {
     children: JSX.Element | JSX.Element[];
 };
 
-export function AppCard({ children }: Props) {
+export default function AppCard({ children }: Props): React.JSX.Element {
     return (
         <Card
             sx={{ display: 'flex', p: 0 }}

@@ -1,4 +1,4 @@
-export const palette = {
+const palette = {
     primary: {
         main: '#763EBD',
         light: '#F2ECF9',
@@ -54,3 +54,4 @@ export const palette = {
     },
     divider: '#e5eaef',
 };
+export default palette;

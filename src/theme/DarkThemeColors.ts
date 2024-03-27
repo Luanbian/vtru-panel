@@ -108,4 +108,4 @@ const DarkThemeColors = [
     },
 ];
 
-export { DarkThemeColors };
+export default DarkThemeColors;

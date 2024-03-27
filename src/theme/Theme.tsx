@@ -4,12 +4,12 @@ import { Direction, createTheme } from '@mui/material/styles';
 
 import typography from './Typography';
 import components from './Components';
-import { DarkThemeColors } from './DarkThemeColors';
+import DarkThemeColors from './DarkThemeColors';
 import { baseDarkTheme, baselightTheme } from './DefaultColors';
-import { LightThemeColors } from './LightThemeColors';
+import LightThemeColors from './LightThemeColors';
 import { darkshadows, shadows } from './Shadows';
-import { palette } from './Palette';
-import { customizer } from './customizer';
+import palette from './Palette';
+import customizer from './customizer';
 
 interface Config {
     direction: string;
@@ -23,12 +23,9 @@ export const BuildTheme = (config: Config = {} as Config) => {
     const darkthemeOptions = DarkThemeColors.find(
         (theme) => theme.name === config.theme,
     );
-    const defaultTheme =
-        customizer.activeMode === 'dark' ? baseDarkTheme : baselightTheme;
-    const defaultShadow =
-        customizer.activeMode === 'dark' ? darkshadows : shadows;
-    const themeSelect =
-        customizer.activeMode === 'dark' ? darkthemeOptions : themeOptions;
+    const defaultTheme = customizer.activeMode === 'dark' ? baseDarkTheme : baselightTheme;
+    const defaultShadow = customizer.activeMode === 'dark' ? darkshadows : shadows;
+    const themeSelect = customizer.activeMode === 'dark' ? darkthemeOptions : themeOptions;
     const baseMode = {
         palette: {
             mode: customizer.activeMode,

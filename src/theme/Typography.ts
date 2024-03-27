@@ -1,4 +1,4 @@
-const typography: any = {
+const typography = {
     fontFamily: ['Plus Jakarta Sans', 'Helvetica', 'Arial', 'sans-serif'].join(
         ',',
     ),

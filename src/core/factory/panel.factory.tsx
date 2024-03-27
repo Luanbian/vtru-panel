@@ -1,3 +1,5 @@
+import React from 'react';
 import Panel from '../../presentation/pages/panel';
 
-export const makePanel = () => <Panel />;
+const makePanel = (): React.JSX.Element => <Panel />;
+export default makePanel;

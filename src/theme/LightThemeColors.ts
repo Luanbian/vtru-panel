@@ -103,4 +103,4 @@ const LightThemeColors = [
     },
 ];
 
-export { LightThemeColors };
+export default LightThemeColors;

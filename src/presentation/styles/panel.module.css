@@ -31,10 +31,3 @@
     flex-direction: row;
     margin-bottom: 4%;
 }
-
-@media screen and (max-width: 768px) {
-    .wrapperActions {
-        display: flex;
-        flex-direction: column !important;
-    }
-}

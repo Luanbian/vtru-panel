@@ -15,8 +15,8 @@ export default function Panel(): React.JSX.Element {
                 src="./original.image.png"
                 alt="original"
             />
-            <Grid container spacing={2} columns={16} className={styles.wrapperActions}>
-                <Grid item xs={8}>
+            <Grid container spacing={2}>
+                <Grid item xs={12} sm={6}>
                     <div className={styles.actionsBox}>
                         <ActionButton title="P" />
                         <ActionButton title="O" />
@@ -29,7 +29,7 @@ export default function Panel(): React.JSX.Element {
                         alt="buy panel"
                     />
                 </Grid>
-                <Grid item xs={8}>
+                <Grid item xs={12} sm={6}>
                     <section className={styles.rightSection}>
                         <Typography variant="h1">Title</Typography>
                         <div className={styles.creator}>

@@ -5,14 +5,21 @@ import styles from './index.module.css';
 type ActionButtonProps = {
     title: string;
     onClick?: () => void;
+    imageUrl: string;
 };
 
 export default function ActionButton({
     title,
     onClick,
+    imageUrl,
 }: ActionButtonProps): React.JSX.Element {
     return (
-        <Button className={styles.main} type="button" onClick={onClick}>
+        <Button
+            className={styles.main}
+            sx={{ backgroundImage: `url(${imageUrl})` }}
+            type="button"
+            onClick={onClick}
+        >
             {title}
         </Button>
     );

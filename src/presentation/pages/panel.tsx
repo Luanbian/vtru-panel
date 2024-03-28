@@ -39,6 +39,7 @@ export default function Panel(): React.JSX.Element {
                                 height: 300,
                             })}
                             title="P"
+                            imageUrl="https://wallpapers.com/images/hd/nft-pictures-s01o3iv3xhglpfzl.jpg"
                         />
                         <ActionButton
                             onClick={() => setSize({
@@ -46,6 +47,7 @@ export default function Panel(): React.JSX.Element {
                                 height: 200,
                             })}
                             title="O"
+                            imageUrl="https://wallpapers.com/images/hd/nft-pictures-s01o3iv3xhglpfzl.jpg"
                         />
                         <ActionButton
                             onClick={() => setSize({
@@ -53,6 +55,7 @@ export default function Panel(): React.JSX.Element {
                                 height: 350,
                             })}
                             title="Bi"
+                            imageUrl="https://wallpapers.com/images/hd/nft-pictures-s01o3iv3xhglpfzl.jpg"
                         />
                         <ActionButton
                             onClick={() => setSize({
@@ -60,6 +63,7 @@ export default function Panel(): React.JSX.Element {
                                 height: 550,
                             })}
                             title="BV"
+                            imageUrl="https://wallpapers.com/images/hd/nft-pictures-s01o3iv3xhglpfzl.jpg"
                         />
                     </div>
                 </Grid>

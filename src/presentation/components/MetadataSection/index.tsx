@@ -14,67 +14,61 @@ export default function MetadataSection({
     title,
     labels,
 }: MetadataSectionProps): React.JSX.Element {
-    let labelType;
-    if (title === 'Context') {
-        labelType = labels as Icontext;
+    if ('title' in labels) {
         return (
             <>
                 <Typography variant="h5">{title}</Typography>
-                <p>Title: {labelType.title}</p>
-                <p>Description: {labelType.description}</p>
-                <p>Culture: {labelType.culture.join(', ')}</p>
-                <p>Mood: {labelType.mood.join(', ')}</p>
-                <p>Colors: {labelType.colors}</p>
-                <p>Copyright: {labelType.copyright}</p>
-                <p>Orientation: {labelType.orientation.join(', ')}</p>
+                <p>Title: {labels.title}</p>
+                <p>Description: {labels.description}</p>
+                <p>Culture: {labels.culture.join(', ')}</p>
+                <p>Mood: {labels.mood.join(', ')}</p>
+                <p>Colors: {labels.colors}</p>
+                <p>Copyright: {labels.copyright}</p>
+                <p>Orientation: {labels.orientation.join(', ')}</p>
             </>
         );
     }
-    if (title === 'Taxonomy') {
-        labelType = labels as Itaxonomy;
+    if ('objectType' in labels) {
         return (
             <>
                 <Typography variant="h5">{title}</Typography>
-                <p>ObjectType: {labelType.objectType.join(', ')}</p>
-                <p>Tags: {labelType.tags}</p>
-                <p>Collections: {labelType.collections}</p>
-                <p>AiGeneration: {labelType.aiGeneration.join(', ')}</p>
-                <p>Arenabled: {labelType.arenabled.join(', ')}</p>
-                <p>Nudity: {labelType.nudity.join(', ')}</p>
-                <p>Category: {labelType.category.join(', ')}</p>
-                <p>Medium: {labelType.medium.join(', ')}</p>
-                <p>Style: {labelType.style.join(', ')}</p>
-                <p>Subject: {labelType.subject}</p>
+                <p>ObjectType: {labels.objectType.join(', ')}</p>
+                <p>Tags: {labels.tags}</p>
+                <p>Collections: {labels.collections}</p>
+                <p>AiGeneration: {labels.aiGeneration.join(', ')}</p>
+                <p>Arenabled: {labels.arenabled.join(', ')}</p>
+                <p>Nudity: {labels.nudity.join(', ')}</p>
+                <p>Category: {labels.category.join(', ')}</p>
+                <p>Medium: {labels.medium.join(', ')}</p>
+                <p>Style: {labels.style.join(', ')}</p>
+                <p>Subject: {labels.subject}</p>
             </>
         );
     }
-    if (title === 'Creators') {
-        labelType = labels as Icreators;
+    if ('name' in labels) {
         return (
             <>
                 <Typography variant="h5">{title}</Typography>
-                <p>Name: {labelType.name}</p>
-                <p>Roles: {labelType.roles}</p>
-                <p>Bio: {labelType.bio}</p>
-
-                <p>Ethnicity: {labelType.ethnicity.join(', ')}</p>
-                <p>Gender: {labelType.gender.join(', ')}</p>
-                <p>Nationality: {labelType.nationality.join(', ')}</p>
-                <p>Residence: {labelType.residence.join(', ')}</p>
+                <p>Name: {labels.name}</p>
+                <p>Roles: {labels.roles}</p>
+                <p>Bio: {labels.bio}</p>
+                <p>Ethnicity: {labels.ethnicity.join(', ')}</p>
+                <p>Gender: {labels.gender.join(', ')}</p>
+                <p>Nationality: {labels.nationality.join(', ')}</p>
+                <p>Residence: {labels.residence.join(', ')}</p>
             </>
         );
     }
-    labelType = labels as Iprovenance;
     return (
         <>
             <Typography variant="h5">{title}</Typography>
-            <p>Country: {labelType.country.join(', ')}</p>
-            <p>PlusCode: {labelType.plusCode}</p>
-            <p>Blockchain: {labelType.blockchain.join(', ')}</p>
-            <p>ExibitionName: {labelType.exhibitions.exhibitionName}</p>
-            <p>ExibitionUrl: {labelType.exhibitions.exhibitionUrl}</p>
-            <p>AwardsName: {labelType.awards.awardName}</p>
-            <p>AwardsUrl: {labelType.awards.awardUrl}</p>
+            <p>Country: {labels.country.join(', ')}</p>
+            <p>PlusCode: {labels.plusCode}</p>
+            <p>Blockchain: {labels.blockchain.join(', ')}</p>
+            <p>ExibitionName: {labels.exhibitions.exhibitionName}</p>
+            <p>ExibitionUrl: {labels.exhibitions.exhibitionUrl}</p>
+            <p>AwardsName: {labels.awards.awardName}</p>
+            <p>AwardsUrl: {labels.awards.awardUrl}</p>
         </>
     );
 }

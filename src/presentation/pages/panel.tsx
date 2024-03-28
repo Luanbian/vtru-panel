@@ -7,20 +7,31 @@ import {
     Typography,
 } from '@mui/material';
 import { IconCaretDown } from '@tabler/icons-react';
-
 import ActionButton from '../components/ActionButton';
 import MetadataSection from '../components/MetadataSection';
 import Avatar from '../components/Avatar';
-
 import styles from '../styles/panel.module.css';
-
 import json from '../../../a.json';
+import { IobtainAssets } from '../../data/protocols/obtain.assets.protocol';
 
-export default function Panel(): React.JSX.Element {
+type PanelProps = {
+    obtainAssets: IobtainAssets
+};
+
+export default function Panel({ obtainAssets }: PanelProps): React.JSX.Element {
     const [size, setSize] = React.useState({
         width: 300,
         height: 300,
     });
+    const [text, setText] = React.useState('');
+
+    React.useEffect(() => {
+        const onMounted = async () => {
+            const data = await obtainAssets.perform({ id: '6601adc7dc55cca07532d16f' });
+            setText(JSON.stringify(data.body));
+        };
+        onMounted();
+    }, [obtainAssets]);
 
     return (
         <main className={styles.main}>
@@ -31,6 +42,7 @@ export default function Panel(): React.JSX.Element {
                 width={size.width}
                 height={size.height}
             />
+            <p>{text}</p>
             <Grid container spacing={2}>
                 <Grid item xs={12} sm={12}>
                     <div className={styles.actionsBox}>

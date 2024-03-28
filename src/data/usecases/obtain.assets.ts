@@ -1,5 +1,7 @@
 import { HttpStatusCode } from '../../@types/http.response';
 import { Assets } from '../../domain/entitties/assets';
+import NotFoundError from '../../domain/errors/not.found';
+import UnexpectedError from '../../domain/errors/unexpected';
 import { IHttpClient } from '../../infra/protocols/http.client.protocol';
 import { IobtainAssets, IobtainAssetsParams } from '../protocols/obtain.assets.protocol';
 
@@ -16,7 +18,8 @@ export default class ObtainAssets implements IobtainAssets {
         });
         switch (httpResponse.statusCode) {
         case HttpStatusCode.ok: return httpResponse.body as Assets;
-        default: throw new Error('request error');
+        case HttpStatusCode.notFound: throw new NotFoundError();
+        default: throw new UnexpectedError();
         }
     }
 }

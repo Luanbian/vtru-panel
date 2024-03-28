@@ -4,6 +4,7 @@ export enum HttpStatusCode {
     noContent = 204,
     unathorized = 401,
     badRequest = 400,
+    notFound = 404,
 }
 
 export interface HttpResponse {

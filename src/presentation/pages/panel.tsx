@@ -1,5 +1,11 @@
 import React from 'react';
-import { Grid, Typography } from '@mui/material';
+import {
+    Accordion,
+    AccordionDetails,
+    AccordionSummary,
+    Grid,
+    Typography,
+} from '@mui/material';
 
 import ActionButton from '../components/ActionButton';
 import MetadataSection from '../components/MetadataSection';
@@ -25,7 +31,7 @@ export default function Panel(): React.JSX.Element {
                 height={size.height}
             />
             <Grid container spacing={2}>
-                <Grid item xs={12} sm={6}>
+                <Grid item xs={12} sm={12}>
                     <div className={styles.actionsBox}>
                         <ActionButton
                             onClick={() =>
@@ -65,7 +71,7 @@ export default function Panel(): React.JSX.Element {
                         />
                     </div>
                 </Grid>
-                <Grid item xs={12} sm={6}>
+                <Grid item xs={12} sm={12}>
                     <section className={styles.rightSection}>
                         <Typography variant="h1">My NFT</Typography>
                         <div className={styles.creator}>
@@ -82,22 +88,53 @@ export default function Panel(): React.JSX.Element {
                             </Typography>
                         </div>
 
-                        <MetadataSection
-                            title="Creators"
-                            labels={json.creators}
-                        />
-                        <MetadataSection
-                            title="Context"
-                            labels={json.context}
-                        />
-                        <MetadataSection
-                            title="Taxonomy"
-                            labels={json.taxonomy}
-                        />
-                        <MetadataSection
-                            title="Provenance"
-                            labels={json.provenance}
-                        />
+                        <Accordion defaultExpanded>
+                            <AccordionSummary>
+                                <Typography variant="h6">Context</Typography>
+                            </AccordionSummary>
+                            <AccordionDetails>
+                                <MetadataSection
+                                    title="Context"
+                                    labels={json.context}
+                                />
+                            </AccordionDetails>
+                        </Accordion>
+
+                        <Accordion>
+                            <AccordionSummary>
+                                <Typography variant="h6">Creators</Typography>
+                            </AccordionSummary>
+                            <AccordionDetails>
+                                <MetadataSection
+                                    title="Creators"
+                                    labels={json.creators}
+                                />
+                            </AccordionDetails>
+                        </Accordion>
+
+                        <Accordion>
+                            <AccordionSummary>
+                                <Typography variant="h6">Taxonomy</Typography>
+                            </AccordionSummary>
+                            <AccordionDetails>
+                                <MetadataSection
+                                    title="Taxonomy"
+                                    labels={json.taxonomy}
+                                />
+                            </AccordionDetails>
+                        </Accordion>
+
+                        <Accordion>
+                            <AccordionSummary>
+                                <Typography variant="h6">Provenance</Typography>
+                            </AccordionSummary>
+                            <AccordionDetails>
+                                <MetadataSection
+                                    title="Provenance"
+                                    labels={json.provenance}
+                                />
+                            </AccordionDetails>
+                        </Accordion>
                     </section>
                 </Grid>
             </Grid>

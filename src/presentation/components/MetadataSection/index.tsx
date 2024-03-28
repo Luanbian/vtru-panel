@@ -19,7 +19,6 @@ export default function MetadataSection({
         labelType = labels as Icontext;
         return (
             <>
-                <Typography variant="h5">{title}</Typography>
                 <p>Title: {labelType.title}</p>
                 <p>Description: {labelType.description}</p>
                 <p>Culture: {labelType.culture.join(', ')}</p>
@@ -34,7 +33,6 @@ export default function MetadataSection({
         labelType = labels as Itaxonomy;
         return (
             <>
-                <Typography variant="h5">{title}</Typography>
                 <p>ObjectType: {labelType.objectType.join(', ')}</p>
                 <p>Tags: {labelType.tags}</p>
                 <p>Collections: {labelType.collections}</p>
@@ -52,7 +50,6 @@ export default function MetadataSection({
         labelType = labels as Icreators;
         return (
             <>
-                <Typography variant="h5">{title}</Typography>
                 <p>Name: {labelType.name}</p>
                 <p>Roles: {labelType.roles}</p>
                 <p>Bio: {labelType.bio}</p>
@@ -67,7 +64,6 @@ export default function MetadataSection({
     labelType = labels as Iprovenance;
     return (
         <>
-            <Typography variant="h5">{title}</Typography>
             <p>Country: {labelType.country.join(', ')}</p>
             <p>PlusCode: {labelType.plusCode}</p>
             <p>Blockchain: {labelType.blockchain.join(', ')}</p>

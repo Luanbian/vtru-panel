@@ -39,7 +39,7 @@ export default function Panel(): React.JSX.Element {
                                 width: 300,
                                 height: 300,
                             })}
-                            title="P"
+                            title="Preview"
                             imageUrl="https://wallpapers.com/images/hd/nft-pictures-s01o3iv3xhglpfzl.jpg"
                         />
                         <ActionButton
@@ -47,7 +47,7 @@ export default function Panel(): React.JSX.Element {
                                 width: 400,
                                 height: 200,
                             })}
-                            title="O"
+                            title="Original"
                             imageUrl="https://wallpapers.com/images/hd/nft-pictures-s01o3iv3xhglpfzl.jpg"
                         />
                         <ActionButton

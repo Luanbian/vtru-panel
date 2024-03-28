@@ -1,4 +1,3 @@
-import { Typography } from '@mui/material';
 import React from 'react';
 import { Icontext } from '../../../domain/entitties/context';
 import { Icreators } from '../../../domain/entitties/creators';
@@ -6,18 +5,14 @@ import { Itaxonomy } from '../../../domain/entitties/taxonomy';
 import { Iprovenance } from '../../../domain/entitties/provenance';
 
 type MetadataSectionProps = {
-    title: string;
+    title?: string;
     labels: Icontext | Icreators | Itaxonomy | Iprovenance;
 };
 
-export default function MetadataSection({
-    title,
-    labels,
-}: MetadataSectionProps): React.JSX.Element {
+export default function MetadataSection({ labels }: MetadataSectionProps): React.JSX.Element {
     if ('title' in labels) {
         return (
             <>
-                <Typography variant="h5">{title}</Typography>
                 <p>Title: {labels.title}</p>
                 <p>Description: {labels.description}</p>
                 <p>Culture: {labels.culture.join(', ')}</p>
@@ -31,7 +26,6 @@ export default function MetadataSection({
     if ('objectType' in labels) {
         return (
             <>
-                <Typography variant="h5">{title}</Typography>
                 <p>ObjectType: {labels.objectType.join(', ')}</p>
                 <p>Tags: {labels.tags}</p>
                 <p>Collections: {labels.collections}</p>
@@ -48,7 +42,6 @@ export default function MetadataSection({
     if ('name' in labels) {
         return (
             <>
-                <Typography variant="h5">{title}</Typography>
                 <p>Name: {labels.name}</p>
                 <p>Roles: {labels.roles}</p>
                 <p>Bio: {labels.bio}</p>
@@ -61,7 +54,6 @@ export default function MetadataSection({
     }
     return (
         <>
-            <Typography variant="h5">{title}</Typography>
             <p>Country: {labels.country.join(', ')}</p>
             <p>PlusCode: {labels.plusCode}</p>
             <p>Blockchain: {labels.blockchain.join(', ')}</p>

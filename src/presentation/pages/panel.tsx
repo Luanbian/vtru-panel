@@ -90,7 +90,6 @@ export default function Panel(): React.JSX.Element {
                             </AccordionSummary>
                             <AccordionDetails>
                                 <MetadataSection
-                                    title="Context"
                                     labels={json.context}
                                 />
                             </AccordionDetails>
@@ -102,7 +101,6 @@ export default function Panel(): React.JSX.Element {
                             </AccordionSummary>
                             <AccordionDetails>
                                 <MetadataSection
-                                    title="Creators"
                                     labels={json.creators}
                                 />
                             </AccordionDetails>
@@ -114,7 +112,6 @@ export default function Panel(): React.JSX.Element {
                             </AccordionSummary>
                             <AccordionDetails>
                                 <MetadataSection
-                                    title="Taxonomy"
                                     labels={json.taxonomy}
                                 />
                             </AccordionDetails>
@@ -126,7 +123,6 @@ export default function Panel(): React.JSX.Element {
                             </AccordionSummary>
                             <AccordionDetails>
                                 <MetadataSection
-                                    title="Provenance"
                                     labels={json.provenance}
                                 />
                             </AccordionDetails>

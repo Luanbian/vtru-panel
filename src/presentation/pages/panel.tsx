@@ -28,39 +28,31 @@ export default function Panel(): React.JSX.Element {
                 <Grid item xs={12} sm={6}>
                     <div className={styles.actionsBox}>
                         <ActionButton
-                            onClick={() =>
-                                setSize({
-                                    width: 300,
-                                    height: 300,
-                                })
-                            }
+                            onClick={() => setSize({
+                                width: 300,
+                                height: 300,
+                            })}
                             title="P"
                         />
                         <ActionButton
-                            onClick={() =>
-                                setSize({
-                                    width: 400,
-                                    height: 200,
-                                })
-                            }
+                            onClick={() => setSize({
+                                width: 400,
+                                height: 200,
+                            })}
                             title="O"
                         />
                         <ActionButton
-                            onClick={() =>
-                                setSize({
-                                    width: 500,
-                                    height: 350,
-                                })
-                            }
+                            onClick={() => setSize({
+                                width: 500,
+                                height: 350,
+                            })}
                             title="Bi"
                         />
                         <ActionButton
-                            onClick={() =>
-                                setSize({
-                                    width: 300,
-                                    height: 550,
-                                })
-                            }
+                            onClick={() => setSize({
+                                width: 300,
+                                height: 550,
+                            })}
                             title="BV"
                         />
                     </div>
@@ -69,7 +61,7 @@ export default function Panel(): React.JSX.Element {
                     <section className={styles.rightSection}>
                         <Typography variant="h1">My NFT</Typography>
                         <div className={styles.creator}>
-                            <Avatar imageUrl={json.creators.profileUrl} />
+                            <Avatar imageUrl={json.creators.profileUrl} name={json.creators.name} />
                             <Typography
                                 variant="h6"
                                 style={{

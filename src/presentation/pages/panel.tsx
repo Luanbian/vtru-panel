@@ -1,7 +1,6 @@
 import React from 'react';
 import { Grid, Typography } from '@mui/material';
 
-import Header from '../components/Header';
 import ActionButton from '../components/ActionButton';
 import MetadataSection from '../components/MetadataSection';
 import Avatar from '../components/Avatar';
@@ -13,7 +12,6 @@ import json from '../../../a.json';
 export default function Panel(): React.JSX.Element {
     return (
         <main className={styles.main}>
-            <Header />
             <img
                 className={styles.originalImage}
                 src="https://wallpapers.com/images/hd/nft-pictures-s01o3iv3xhglpfzl.jpg"

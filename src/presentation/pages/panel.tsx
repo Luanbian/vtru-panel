@@ -10,48 +10,94 @@ import styles from '../styles/panel.module.css';
 import json from '../../../a.json';
 
 export default function Panel(): React.JSX.Element {
+    const [size, setSize] = React.useState({
+        width: 300,
+        height: 300,
+    });
+
     return (
         <main className={styles.main}>
             <img
                 className={styles.originalImage}
                 src="https://wallpapers.com/images/hd/nft-pictures-s01o3iv3xhglpfzl.jpg"
                 alt="original"
+                width={size.width}
+                height={size.height}
             />
             <Grid container spacing={2}>
                 <Grid item xs={12} sm={6}>
                     <div className={styles.actionsBox}>
-                        <ActionButton title="P" />
-                        <ActionButton title="O" />
-                        <ActionButton title="Bi" />
-                        <ActionButton title="BV" />
+                        <ActionButton
+                            onClick={() =>
+                                setSize({
+                                    width: 300,
+                                    height: 300,
+                                })
+                            }
+                            title="P"
+                        />
+                        <ActionButton
+                            onClick={() =>
+                                setSize({
+                                    width: 400,
+                                    height: 200,
+                                })
+                            }
+                            title="O"
+                        />
+                        <ActionButton
+                            onClick={() =>
+                                setSize({
+                                    width: 500,
+                                    height: 350,
+                                })
+                            }
+                            title="Bi"
+                        />
+                        <ActionButton
+                            onClick={() =>
+                                setSize({
+                                    width: 300,
+                                    height: 550,
+                                })
+                            }
+                            title="BV"
+                        />
                     </div>
-                    <img
-                        className={styles.panelImage}
-                        src="./buy.panel.jpg"
-                        alt="buy panel"
-                    />
                 </Grid>
                 <Grid item xs={12} sm={6}>
                     <section className={styles.rightSection}>
                         <Typography variant="h1">My NFT</Typography>
                         <div className={styles.creator}>
-                            <Avatar />
-                            <Typography variant="h6" style={{ textDecoration: 'underline', textIndent: 8, alignContent: 'center' }}>
-                            @Mike
+                            <Avatar imageUrl={json.creators.profileUrl} />
+                            <Typography
+                                variant="h6"
+                                style={{
+                                    textDecoration: 'underline',
+                                    textIndent: 8,
+                                    alignContent: 'center',
+                                }}
+                            >
+                                @{json.creators.name}
                             </Typography>
                         </div>
-                        <Typography variant="h6">Description</Typography>
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing el
-                            it. Quo nihil consectetur odit dolor quasi pariatur! Fugit doloremque
-                            voluptates, in delectus ipsam laborum ad non be
-                            atae? Aliquam sequi beatae
-                            voluptatum at.
-                        </p>
-                        <MetadataSection title="Context" labels={json.context} />
-                        <MetadataSection title="Taxonomy" labels={json.taxonomy} />
-                        <MetadataSection title="Creators" labels={json.creators} />
-                        <MetadataSection title="Provenance" labels={json.provenance} />
+
+                        <MetadataSection
+                            title="Creators"
+                            labels={json.creators}
+                        />
+                        <MetadataSection
+                            title="Context"
+                            labels={json.context}
+                        />
+                        <MetadataSection
+                            title="Taxonomy"
+                            labels={json.taxonomy}
+                        />
+                        <MetadataSection
+                            title="Provenance"
+                            labels={json.provenance}
+                        />
                     </section>
                 </Grid>
             </Grid>

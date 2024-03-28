@@ -21,5 +21,5 @@ export default function Avatar({ imageUrl, name }: AvatarProps)
     }
     return name
         ? <AvatarMui>{name.toUpperCase().substring(0, 2)}</AvatarMui>
-        : <AvatarMui src={DEFAULT_IMAGE_URL} alt="avatar" onError={handleImageError} />;
+        : <AvatarMui src={DEFAULT_IMAGE_URL} alt="avatar" />;
 }

@@ -6,6 +6,7 @@ import {
     Grid,
     Typography,
 } from '@mui/material';
+import { IconCaretDown } from '@tabler/icons-react';
 
 import ActionButton from '../components/ActionButton';
 import MetadataSection from '../components/MetadataSection';
@@ -85,7 +86,7 @@ export default function Panel(): React.JSX.Element {
                         </div>
 
                         <Accordion defaultExpanded>
-                            <AccordionSummary>
+                            <AccordionSummary expandIcon={<IconCaretDown />}>
                                 <Typography variant="h6">Context</Typography>
                             </AccordionSummary>
                             <AccordionDetails>
@@ -96,7 +97,7 @@ export default function Panel(): React.JSX.Element {
                         </Accordion>
 
                         <Accordion>
-                            <AccordionSummary>
+                            <AccordionSummary expandIcon={<IconCaretDown />}>
                                 <Typography variant="h6">Creators</Typography>
                             </AccordionSummary>
                             <AccordionDetails>
@@ -107,7 +108,7 @@ export default function Panel(): React.JSX.Element {
                         </Accordion>
 
                         <Accordion>
-                            <AccordionSummary>
+                            <AccordionSummary expandIcon={<IconCaretDown />}>
                                 <Typography variant="h6">Taxonomy</Typography>
                             </AccordionSummary>
                             <AccordionDetails>
@@ -118,7 +119,7 @@ export default function Panel(): React.JSX.Element {
                         </Accordion>
 
                         <Accordion>
-                            <AccordionSummary>
+                            <AccordionSummary expandIcon={<IconCaretDown />}>
                                 <Typography variant="h6">Provenance</Typography>
                             </AccordionSummary>
                             <AccordionDetails>

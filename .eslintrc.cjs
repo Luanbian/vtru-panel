@@ -29,6 +29,7 @@ module.exports = {
         'react/no-array-index-key': 'off',
         'react/require-default-props': 'off',
         'react/jsx-one-expression-per-line': 'off',
-        'class-methods-use-this': 'off'
+        'class-methods-use-this': 'off',
+        'no-param-reassign': 'off'
     },
 };

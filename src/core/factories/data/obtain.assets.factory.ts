@@ -3,7 +3,7 @@ import ObtainAssets from '../../../data/usecases/obtain.assets';
 import makeHttpClient from '../infra/http.client.factory';
 
 const makeObtainAssets = (): IobtainAssets => {
-    const url = '/assets/show'; // TODO correct the url
+    const url = 'https://studio-api.vtru.dev/assets/show';
     const httpClient = makeHttpClient();
     return new ObtainAssets(url, httpClient);
 };

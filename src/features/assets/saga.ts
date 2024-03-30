@@ -1,19 +1,21 @@
 import { put, takeLatest, call } from 'redux-saga/effects';
 import { PayloadAction } from '@reduxjs/toolkit';
-import axios, { AxiosError, AxiosResponse } from 'axios';
+import { AxiosError, type AxiosResponse } from 'axios';
 
 import { actions } from './slice';
-import { ResponseAPI } from '../types';
 import { Asset } from './types';
+import makeObtainAssets from '../../core/factories/data/obtain.assets.factory';
+
+const obtainAssets = async (id: string) => makeObtainAssets().perform({ id });
 
 function* getAsset({ payload }: PayloadAction<{ id: string }>) {
     yield put(actions.assetStartLoading());
     try {
-        const response: AxiosResponse<ResponseAPI<Asset>> = yield call(
-            axios.get,
-            `https://studio-api.vtru.dev/assets/show/${payload.id}`,
+        const response: AxiosResponse<Asset> = yield call(
+            obtainAssets,
+            payload.id,
         );
-        const asset = response.data.data;
+        const asset = response.data;
         yield put(actions.assetSuccess(asset));
     } catch (error) {
         if (error instanceof AxiosError) {

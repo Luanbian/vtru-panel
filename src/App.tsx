@@ -1,10 +1,13 @@
 import React from 'react';
 
 import { ThemeProvider, createTheme } from '@mui/material/styles';
+import { Provider } from 'react-redux';
 import CssBaseline from '@mui/material/CssBaseline';
 import { Container } from '@mui/material';
 import makePanel from './core/factories/pages/panel.factory';
 import { ThemeSettings } from './theme/Theme';
+
+import store from './features/store';
 
 interface ProviderModernizeProps {
     children: React.ReactNode;
@@ -34,14 +37,17 @@ function ProviderModernize({ children }: ProviderModernizeProps) {
 
 function App(): React.JSX.Element {
     return (
-        <ProviderModernize>
-            <Container sx={{
-                paddingBottom: '2rem',
-            }}
-            >
-                {makePanel()}
-            </Container>
-        </ProviderModernize>
+        <Provider store={store}>
+            <ProviderModernize>
+                <Container
+                    sx={{
+                        paddingBottom: '2rem',
+                    }}
+                >
+                    {makePanel()}
+                </Container>
+            </ProviderModernize>
+        </Provider>
     );
 }
 

@@ -1,22 +1,27 @@
-import { put, takeLatest } from 'redux-saga/effects';
-import axios from 'axios';
-import { getAssetFailure, getAssetStart, getAssetSuccess } from './slice';
+import { put, takeLatest, call } from 'redux-saga/effects';
+import { PayloadAction } from '@reduxjs/toolkit';
+import axios, { AxiosError, AxiosResponse } from 'axios';
 
-function fetchAssetAPI() {
-    return axios.get('url');
-}
+import { actions } from './slice';
+import { ResponseAPI } from '../types';
+import { Asset } from './types';
 
-function* getAsset(action) {
+function* getAsset({ payload }: PayloadAction<{ id: string }>) {
+    yield put(actions.assetStartLoading());
     try {
-        yield put(getAssetStart());
-        const response = yield call(fetchAssetAPI, action.payload);
-        const asset = response.data;
-        yield put(getAssetSuccess(asset));
+        const response: AxiosResponse<ResponseAPI<Asset>> = yield call(
+            axios.get,
+            `https://studio-api.vtru.dev/assets/show/${payload.id}`,
+        );
+        const asset = response.data.data;
+        yield put(actions.assetSuccess(asset));
     } catch (error) {
-        yield put(getAssetFailure(error.message));
+        if (error instanceof AxiosError) {
+            yield put(actions.assetFailure(error.message));
+        }
     }
 }
 
-export default function* watchGetAsset() {
-    yield takeLatest('asset/getAsset', getAsset);
+export default function* watchAsset() {
+    yield takeLatest(actions.getAssetRequest.type, getAsset);
 }

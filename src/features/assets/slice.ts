@@ -1,14 +1,17 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { Asset } from './types';
 
 interface AssetState {
     loading: boolean;
-    asset: object;
+    asset: Asset;
     error: string | null;
 }
 
 const initialState: AssetState = {
     loading: false,
-    asset: {},
+    asset: {
+        _id: '',
+    },
     error: null,
 };
 
@@ -16,21 +19,21 @@ const assetSlice = createSlice({
     name: 'asset',
     initialState,
     reducers: {
-        getAssetStart(state) {
+        getAssetRequest(state, action) {},
+        assetStartLoading: (state) => {
             state.loading = true;
             state.error = null;
         },
-        getAssetSuccess(state, action: PayloadAction<object>) {
+        assetSuccess(state, action: PayloadAction<Asset>) {
             state.loading = false;
             state.asset = action.payload;
         },
-        getAssetFailure(state, action: PayloadAction<string>) {
+        assetFailure(state, action: PayloadAction<string>) {
             state.loading = false;
             state.error = action.payload;
         },
     },
 });
 
-export const { getAssetStart, getAssetSuccess, getAssetFailure } = assetSlice.actions;
-
+export const { actions } = assetSlice;
 export default assetSlice.reducer;

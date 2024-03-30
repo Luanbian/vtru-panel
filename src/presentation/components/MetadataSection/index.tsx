@@ -42,14 +42,14 @@ export default function MetadataSection({ labels }: MetadataSectionProps): React
     if (Array.isArray(labels)) {
         return (
             <>
-                {labels.map((item) => (
-                    <>
+                {labels.map((item, index) => (
+                    <div key={index}>
                         <p>Name: {item.name}</p>
                         <p>Roles: {item.roles.join(', ')}</p>
                         <p>Bio: {item.bio}</p>
                         <p>Nationality: {item.nationality}</p>
                         <p>ProfileUrl: {item.profileUrl}</p>
-                    </>
+                    </div>
                 ))}
             </>
         );

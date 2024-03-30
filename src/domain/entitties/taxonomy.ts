@@ -1,12 +1,12 @@
 export interface Itaxonomy {
-    objectType: string[];
-    tags: string;
-    collections: string;
-    aiGeneration: string[];
-    arenabled: string[];
-    nudity: string[];
-    category: string[];
+    objectType: string;
+    category: string;
+    tags: string[];
+    collections: string[];
     medium: string[];
     style: string[];
-    subject: string;
+    subject: string[];
+    aiGeneration: string;
+    arenabled: string;
+    nudity: string;
 }

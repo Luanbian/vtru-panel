@@ -12,39 +12,27 @@ import ActionButton from '../components/ActionButton';
 import MetadataSection from '../components/MetadataSection';
 import Avatar from '../components/Avatar';
 import styles from '../styles/panel.module.css';
-import json from '../../../a.json';
-import { IobtainAssets } from '../../data/protocols/obtain.assets.protocol';
 import { actions } from '../../features/assets/slice';
 
-type PanelProps = {
-    obtainAssets: IobtainAssets;
-};
-
-export default function Panel({ obtainAssets }: PanelProps): React.JSX.Element {
+export default function Panel(): React.JSX.Element {
     const dispatch = useDispatch();
 
     const [size, setSize] = useState({
         width: 300,
         height: 300,
     });
-    const [text, setText] = useState('');
 
     const asset = useSelector((state) => state.asset.asset);
 
     useEffect(() => {
-        // const onMounted = async () => {
-        //     const data = await obtainAssets.perform({
-        //         id: '6601adc7dc55cca07532d16f',
-        //     });
-        //     setText(JSON.stringify(data.body));
-        // };
-        // onMounted();
-        dispatch(
-            actions.getAssetRequest({
-                id: '6601adc7dc55cca07532d16f',
-            }),
-        );
-    }, [obtainAssets]);
+        if (asset._id === '') {
+            dispatch(
+                actions.getAssetRequest({
+                    id: '6601adc7dc55cca07532d16f',
+                }),
+            );
+        }
+    }, [asset, dispatch]);
 
     return (
         <main className={styles.main}>
@@ -55,47 +43,38 @@ export default function Panel({ obtainAssets }: PanelProps): React.JSX.Element {
                 width={size.width}
                 height={size.height}
             />
-            <p>{text}</p>
             <Grid container spacing={2}>
                 <Grid item xs={12} sm={12}>
                     <div className={styles.actionsBox}>
                         <ActionButton
-                            onClick={() =>
-                                setSize({
-                                    width: 300,
-                                    height: 300,
-                                })
-                            }
+                            onClick={() => setSize({
+                                width: 300,
+                                height: 300,
+                            })}
                             title="Preview"
                             imageUrl="https://wallpapers.com/images/hd/nft-pictures-s01o3iv3xhglpfzl.jpg"
                         />
                         <ActionButton
-                            onClick={() =>
-                                setSize({
-                                    width: 400,
-                                    height: 200,
-                                })
-                            }
+                            onClick={() => setSize({
+                                width: 400,
+                                height: 200,
+                            })}
                             title="Original"
                             imageUrl="https://wallpapers.com/images/hd/nft-pictures-s01o3iv3xhglpfzl.jpg"
                         />
                         <ActionButton
-                            onClick={() =>
-                                setSize({
-                                    width: 500,
-                                    height: 350,
-                                })
-                            }
+                            onClick={() => setSize({
+                                width: 500,
+                                height: 350,
+                            })}
                             title="Bi"
                             imageUrl="https://wallpapers.com/images/hd/nft-pictures-s01o3iv3xhglpfzl.jpg"
                         />
                         <ActionButton
-                            onClick={() =>
-                                setSize({
-                                    width: 300,
-                                    height: 550,
-                                })
-                            }
+                            onClick={() => setSize({
+                                width: 300,
+                                height: 550,
+                            })}
                             title="BV"
                             imageUrl="https://wallpapers.com/images/hd/nft-pictures-s01o3iv3xhglpfzl.jpg"
                         />
@@ -104,29 +83,38 @@ export default function Panel({ obtainAssets }: PanelProps): React.JSX.Element {
                 <Grid item xs={12} sm={12}>
                     <section className={styles.rightSection}>
                         <Typography variant="h1">My NFT</Typography>
-                        <div className={styles.creator}>
-                            <Avatar
-                                imageUrl={json.creators.profileUrl}
-                                name={json.creators.name}
-                            />
-                            <Typography
-                                variant="h6"
-                                style={{
-                                    textDecoration: 'underline',
-                                    textIndent: 8,
-                                    alignContent: 'center',
-                                }}
-                            >
-                                @{json.creators.name}
-                            </Typography>
-                        </div>
-
+                        {asset && asset.assetMetadata && (
+                            <>
+                                {asset.assetMetadata.creators.formData.map((item, index) => (
+                                    <div className={styles.creator} key={index}>
+                                        <Avatar
+                                            imageUrl={item.profileUrl}
+                                            name={item.name}
+                                        />
+                                        <Typography
+                                            variant="h6"
+                                            style={{
+                                                textDecoration: 'underline',
+                                                textIndent: 8,
+                                                alignContent: 'center',
+                                            }}
+                                        >
+                                            @{item.name}
+                                        </Typography>
+                                    </div>
+                                ))}
+                            </>
+                        )}
                         <Accordion defaultExpanded>
                             <AccordionSummary expandIcon={<IconCaretDown />}>
                                 <Typography variant="h6">Context</Typography>
                             </AccordionSummary>
                             <AccordionDetails>
-                                <MetadataSection labels={json.context} />
+                                {asset && asset.assetMetadata && (
+                                    <MetadataSection
+                                        labels={asset.assetMetadata.context.formData}
+                                    />
+                                )}
                             </AccordionDetails>
                         </Accordion>
 
@@ -135,7 +123,11 @@ export default function Panel({ obtainAssets }: PanelProps): React.JSX.Element {
                                 <Typography variant="h6">Creators</Typography>
                             </AccordionSummary>
                             <AccordionDetails>
-                                <MetadataSection labels={json.creators} />
+                                {asset && asset.assetMetadata && (
+                                    <MetadataSection
+                                        labels={asset.assetMetadata.creators.formData}
+                                    />
+                                )}
                             </AccordionDetails>
                         </Accordion>
 
@@ -144,7 +136,11 @@ export default function Panel({ obtainAssets }: PanelProps): React.JSX.Element {
                                 <Typography variant="h6">Taxonomy</Typography>
                             </AccordionSummary>
                             <AccordionDetails>
-                                <MetadataSection labels={json.taxonomy} />
+                                {asset && asset.assetMetadata && (
+                                    <MetadataSection
+                                        labels={asset.assetMetadata.taxonomy.formData}
+                                    />
+                                )}
                             </AccordionDetails>
                         </Accordion>
 
@@ -153,7 +149,11 @@ export default function Panel({ obtainAssets }: PanelProps): React.JSX.Element {
                                 <Typography variant="h6">Provenance</Typography>
                             </AccordionSummary>
                             <AccordionDetails>
-                                <MetadataSection labels={json.provenance} />
+                                {asset && asset.assetMetadata && (
+                                    <MetadataSection
+                                        labels={asset.assetMetadata.provenance.formData}
+                                    />
+                                )}
                             </AccordionDetails>
                         </Accordion>
                     </section>

@@ -1,10 +1,7 @@
 export interface Icreators {
     name: string;
-    roles: string;
+    roles: string[];
     bio: string;
+    nationality: string;
     profileUrl: string;
-    ethnicity: string[];
-    gender: string[];
-    nationality: string[];
-    residence: string[];
 }

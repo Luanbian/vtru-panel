@@ -6,7 +6,7 @@ import { Iprovenance } from '../../../domain/entitties/provenance';
 
 type MetadataSectionProps = {
     title?: string;
-    labels: Icontext | Icreators | Itaxonomy | Iprovenance;
+    labels: Icontext | Icreators[] | Itaxonomy | Iprovenance;
 };
 
 export default function MetadataSection({ labels }: MetadataSectionProps): React.JSX.Element {
@@ -15,52 +15,51 @@ export default function MetadataSection({ labels }: MetadataSectionProps): React
             <>
                 <p>Title: {labels.title}</p>
                 <p>Description: {labels.description}</p>
-                <p>Culture: {labels.culture.join(', ')}</p>
+                <p>Culture: {labels.culture}</p>
                 <p>Mood: {labels.mood.join(', ')}</p>
                 <p>Colors: {labels.colors}</p>
                 <p>Copyright: {labels.copyright}</p>
-                <p>Orientation: {labels.orientation.join(', ')}</p>
+                <p>Orientation: {labels.orientation}</p>
             </>
         );
     }
     if ('objectType' in labels) {
         return (
             <>
-                <p>ObjectType: {labels.objectType.join(', ')}</p>
-                <p>Tags: {labels.tags}</p>
-                <p>Collections: {labels.collections}</p>
-                <p>AiGeneration: {labels.aiGeneration.join(', ')}</p>
-                <p>Arenabled: {labels.arenabled.join(', ')}</p>
-                <p>Nudity: {labels.nudity.join(', ')}</p>
-                <p>Category: {labels.category.join(', ')}</p>
+                <p>ObjectType: {labels.objectType}</p>
+                <p>Tags: {labels.tags.join(', ')}</p>
+                <p>Collections: {labels.collections.join(', ')}</p>
+                <p>AiGeneration: {labels.aiGeneration}</p>
+                <p>Arenabled: {labels.arenabled}</p>
+                <p>Nudity: {labels.nudity}</p>
+                <p>Category: {labels.category}</p>
                 <p>Medium: {labels.medium.join(', ')}</p>
                 <p>Style: {labels.style.join(', ')}</p>
-                <p>Subject: {labels.subject}</p>
+                <p>Subject: {labels.subject.join(', ')}</p>
             </>
         );
     }
-    if ('name' in labels) {
+    if (Array.isArray(labels)) {
         return (
             <>
-                <p>Name: {labels.name}</p>
-                <p>Roles: {labels.roles}</p>
-                <p>Bio: {labels.bio}</p>
-                <p>Ethnicity: {labels.ethnicity.join(', ')}</p>
-                <p>Gender: {labels.gender.join(', ')}</p>
-                <p>Nationality: {labels.nationality.join(', ')}</p>
-                <p>Residence: {labels.residence.join(', ')}</p>
+                {labels.map((item) => (
+                    <>
+                        <p>Name: {item.name}</p>
+                        <p>Roles: {item.roles.join(', ')}</p>
+                        <p>Bio: {item.bio}</p>
+                        <p>Nationality: {item.nationality}</p>
+                        <p>ProfileUrl: {item.profileUrl}</p>
+                    </>
+                ))}
             </>
         );
     }
     return (
         <>
-            <p>Country: {labels.country.join(', ')}</p>
-            <p>PlusCode: {labels.plusCode}</p>
-            <p>Blockchain: {labels.blockchain.join(', ')}</p>
-            <p>ExibitionName: {labels.exhibitions.exhibitionName}</p>
-            <p>ExibitionUrl: {labels.exhibitions.exhibitionUrl}</p>
-            <p>AwardsName: {labels.awards.awardName}</p>
-            <p>AwardsUrl: {labels.awards.awardUrl}</p>
+            <p>Country: {labels.country}</p>
+            <p>Blockchain: {labels.blockchain}</p>
+            <p>ExibitionName: {labels.exhibitions.join(', ')}</p>
+            <p>AwardsName: {labels.awards.join(', ')}</p>
         </>
     );
 }

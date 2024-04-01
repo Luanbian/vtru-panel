@@ -42,6 +42,44 @@ interface Format {
     name?: string;
 }
 
+export interface Icontext {
+    title: string;
+    description: string;
+    culture: string;
+    mood: string[];
+    colors: string;
+    copyright: string;
+    orientation: string;
+}
+
+export interface Icreators {
+    name: string;
+    roles: string[];
+    bio: string;
+    nationality: string;
+    profileUrl: string;
+}
+
+export interface Iprovenance {
+    country: string;
+    blockchain: string;
+    exhibitions: string[];
+    awards: string[];
+}
+
+export interface Itaxonomy {
+    objectType: string;
+    category: string;
+    tags: string[];
+    collections: string[];
+    medium: string[];
+    style: string[];
+    subject: string[];
+    aiGeneration: string;
+    arenabled: string;
+    nudity: string;
+}
+
 export interface Asset {
     _id: string;
     mediaAuxiliary: {
@@ -65,7 +103,20 @@ export interface Asset {
     generatedArtworkAI: boolean;
     notMintedOtherBlockchain: boolean;
     contract: boolean;
-    assetMetadata?: unknown;
+    assetMetadata?: {
+        context: {
+            formData: Icontext;
+        };
+        creators: {
+            formData: Icreators[];
+        };
+        provenance: {
+            formData: Iprovenance;
+        };
+        taxonomy: {
+            formData: Itaxonomy;
+        };
+    };
     licenses: LicensesFormValues;
     status: AssetStatus;
     framework: {

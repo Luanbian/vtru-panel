@@ -17,7 +17,7 @@ const assetSlice = createSlice({
     name: 'asset',
     initialState,
     reducers: {
-        getAssetRequest(state, action) {},
+        getAssetRequest(_state, _action) {},
         assetStartLoading: (state) => {
             state.loading = true;
             state.error = null;

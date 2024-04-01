@@ -13,7 +13,6 @@ export default class HttpClient implements IHttpClient {
                 headers: params.headers,
             });
         } catch (error) {
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             axiosResponse = (error as any).response;
         }
         return {

@@ -31,6 +31,10 @@ export default function Panel(): React.JSX.Element {
         if (id) dispatch(actions.getAssetRequest({ id }));
     }, [id]);
 
+    if (!asset) {
+        return <div>Loading...</div>;
+    }
+
     return (
         <main className={styles.main}>
             <img
@@ -44,34 +48,42 @@ export default function Panel(): React.JSX.Element {
                 <Grid item xs={12} sm={12}>
                     <div className={styles.actionsBox}>
                         <ActionButton
-                            onClick={() => setSize({
-                                width: 300,
-                                height: 300,
-                            })}
+                            onClick={() =>
+                                setSize({
+                                    width: 300,
+                                    height: 300,
+                                })
+                            }
                             title="Preview"
                             imageUrl={`https://vitruveo-studio-qa-assets.s3.amazonaws.com/${asset?.formats?.preview?.path}`}
                         />
                         <ActionButton
-                            onClick={() => setSize({
-                                width: 400,
-                                height: 200,
-                            })}
+                            onClick={() =>
+                                setSize({
+                                    width: 400,
+                                    height: 200,
+                                })
+                            }
                             title="Original"
                             imageUrl={`https://vitruveo-studio-qa-assets.s3.amazonaws.com/${asset?.formats?.original?.path}`}
                         />
                         <ActionButton
-                            onClick={() => setSize({
-                                width: 500,
-                                height: 350,
-                            })}
+                            onClick={() =>
+                                setSize({
+                                    width: 500,
+                                    height: 350,
+                                })
+                            }
                             title="Exhibition"
                             imageUrl={`https://vitruveo-studio-qa-assets.s3.amazonaws.com/${asset?.formats?.exhibition?.path}`}
                         />
                         <ActionButton
-                            onClick={() => setSize({
-                                width: 300,
-                                height: 550,
-                            })}
+                            onClick={() =>
+                                setSize({
+                                    width: 300,
+                                    height: 550,
+                                })
+                            }
                             title="Display"
                             imageUrl={`https://vitruveo-studio-qa-assets.s3.amazonaws.com/${asset?.formats?.display?.path}`}
                         />
@@ -80,7 +92,7 @@ export default function Panel(): React.JSX.Element {
                 <Grid item xs={12} sm={12}>
                     <section className={styles.rightSection}>
                         <Typography variant="h1">My NFT</Typography>
-                        {asset && asset.assetMetadata && (
+                        {asset.assetMetadata && (
                             <>
                                 {asset.assetMetadata.creators.formData.map(
                                     (item, index) => (
@@ -103,7 +115,7 @@ export default function Panel(): React.JSX.Element {
                                                 @{item.name}
                                             </Typography>
                                         </div>
-                                    ),
+                                    )
                                 )}
                             </>
                         )}
@@ -112,7 +124,7 @@ export default function Panel(): React.JSX.Element {
                                 <Typography variant="h6">Context</Typography>
                             </AccordionSummary>
                             <AccordionDetails>
-                                {asset && asset.assetMetadata && (
+                                {asset.assetMetadata && (
                                     <MetadataSection
                                         labels={
                                             asset.assetMetadata.context.formData
@@ -127,7 +139,7 @@ export default function Panel(): React.JSX.Element {
                                 <Typography variant="h6">Creators</Typography>
                             </AccordionSummary>
                             <AccordionDetails>
-                                {asset && asset.assetMetadata && (
+                                {asset.assetMetadata && (
                                     <MetadataSection
                                         labels={
                                             asset.assetMetadata.creators
@@ -143,7 +155,7 @@ export default function Panel(): React.JSX.Element {
                                 <Typography variant="h6">Taxonomy</Typography>
                             </AccordionSummary>
                             <AccordionDetails>
-                                {asset && asset.assetMetadata && (
+                                {asset.assetMetadata && (
                                     <MetadataSection
                                         labels={
                                             asset.assetMetadata.taxonomy
@@ -159,14 +171,14 @@ export default function Panel(): React.JSX.Element {
                                 <Typography variant="h6">Provenance</Typography>
                             </AccordionSummary>
                             <AccordionDetails>
-                                {asset && asset.assetMetadata && (
+                                {asset.assetMetadata ? (
                                     <MetadataSection
                                         labels={
                                             asset.assetMetadata.provenance
                                                 .formData
                                         }
                                     />
-                                )}
+                                ) : null}
                             </AccordionDetails>
                         </Accordion>
                     </section>

@@ -17,12 +17,8 @@ interface Config {
 }
 
 export const BuildTheme = (config: Config = {} as Config) => {
-    const themeOptions = LightThemeColors.find(
-        (theme) => theme.name === config.theme,
-    );
-    const darkthemeOptions = DarkThemeColors.find(
-        (theme) => theme.name === config.theme,
-    );
+    const themeOptions = LightThemeColors.find((theme) => theme.name === config.theme);
+    const darkthemeOptions = DarkThemeColors.find((theme) => theme.name === config.theme);
     const defaultTheme = customizer.activeMode === 'dark' ? baseDarkTheme : baselightTheme;
     const defaultShadow = customizer.activeMode === 'dark' ? darkshadows : shadows;
     const themeSelect = customizer.activeMode === 'dark' ? darkthemeOptions : themeOptions;
@@ -36,6 +32,7 @@ export const BuildTheme = (config: Config = {} as Config) => {
         shadows: defaultShadow,
         typography,
     };
+    // @ts-expect-error destructuring
     const theme = createTheme({
         ...baseMode,
         ...defaultTheme,
@@ -44,6 +41,8 @@ export const BuildTheme = (config: Config = {} as Config) => {
         direction: config.direction as Direction,
         palette,
     });
+
+    // @ts-expect-error destructuring
     theme.components = components(theme);
 
     return theme;

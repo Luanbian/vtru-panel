@@ -9,9 +9,7 @@ interface AssetState {
 
 const initialState: AssetState = {
     loading: false,
-    asset: {
-        _id: '',
-    },
+    asset: {} as Asset,
     error: null,
 };
 

@@ -14,6 +14,7 @@ import MetadataSection from '../components/MetadataSection';
 import Avatar from '../components/Avatar';
 import styles from '../styles/panel.module.css';
 import { actions } from '../../features/assets/slice';
+import { AppState } from '../../features/store';
 
 export default function Panel(): React.JSX.Element {
     const { id } = useParams<{ id: string }>();
@@ -24,21 +25,17 @@ export default function Panel(): React.JSX.Element {
         height: 300,
     });
 
-    const asset = useSelector((state) => state.asset.asset);
+    const asset = useSelector((state: AppState) => state.asset.asset);
 
     useEffect(() => {
-        if (asset._id === '') {
-            dispatch(
-                actions.getAssetRequest({ id }),
-            );
-        }
-    }, [asset, dispatch, id]);
+        if (id) dispatch(actions.getAssetRequest({ id }));
+    }, [id]);
 
     return (
         <main className={styles.main}>
             <img
                 className={styles.originalImage}
-                src="https://wallpapers.com/images/hd/nft-pictures-s01o3iv3xhglpfzl.jpg"
+                src={`https://vitruveo-studio-qa-assets.s3.amazonaws.com/${asset?.formats?.preview?.path}`}
                 alt="original"
                 width={size.width}
                 height={size.height}
@@ -52,7 +49,7 @@ export default function Panel(): React.JSX.Element {
                                 height: 300,
                             })}
                             title="Preview"
-                            imageUrl="https://wallpapers.com/images/hd/nft-pictures-s01o3iv3xhglpfzl.jpg"
+                            imageUrl={`https://vitruveo-studio-qa-assets.s3.amazonaws.com/${asset?.formats?.preview?.path}`}
                         />
                         <ActionButton
                             onClick={() => setSize({
@@ -60,23 +57,23 @@ export default function Panel(): React.JSX.Element {
                                 height: 200,
                             })}
                             title="Original"
-                            imageUrl="https://wallpapers.com/images/hd/nft-pictures-s01o3iv3xhglpfzl.jpg"
+                            imageUrl={`https://vitruveo-studio-qa-assets.s3.amazonaws.com/${asset?.formats?.original?.path}`}
                         />
                         <ActionButton
                             onClick={() => setSize({
                                 width: 500,
                                 height: 350,
                             })}
-                            title="Bi"
-                            imageUrl="https://wallpapers.com/images/hd/nft-pictures-s01o3iv3xhglpfzl.jpg"
+                            title="Exhibition"
+                            imageUrl={`https://vitruveo-studio-qa-assets.s3.amazonaws.com/${asset?.formats?.exhibition?.path}`}
                         />
                         <ActionButton
                             onClick={() => setSize({
                                 width: 300,
                                 height: 550,
                             })}
-                            title="BV"
-                            imageUrl="https://wallpapers.com/images/hd/nft-pictures-s01o3iv3xhglpfzl.jpg"
+                            title="Display"
+                            imageUrl={`https://vitruveo-studio-qa-assets.s3.amazonaws.com/${asset?.formats?.display?.path}`}
                         />
                     </div>
                 </Grid>
@@ -85,24 +82,29 @@ export default function Panel(): React.JSX.Element {
                         <Typography variant="h1">My NFT</Typography>
                         {asset && asset.assetMetadata && (
                             <>
-                                {asset.assetMetadata.creators.formData.map((item, index) => (
-                                    <div className={styles.creator} key={index}>
-                                        <Avatar
-                                            imageUrl={item.profileUrl}
-                                            name={item.name}
-                                        />
-                                        <Typography
-                                            variant="h6"
-                                            style={{
-                                                textDecoration: 'underline',
-                                                textIndent: 8,
-                                                alignContent: 'center',
-                                            }}
+                                {asset.assetMetadata.creators.formData.map(
+                                    (item, index) => (
+                                        <div
+                                            className={styles.creator}
+                                            key={index}
                                         >
-                                            @{item.name}
-                                        </Typography>
-                                    </div>
-                                ))}
+                                            <Avatar
+                                                imageUrl={item.profileUrl}
+                                                name={item.name}
+                                            />
+                                            <Typography
+                                                variant="h6"
+                                                style={{
+                                                    textDecoration: 'underline',
+                                                    textIndent: 8,
+                                                    alignContent: 'center',
+                                                }}
+                                            >
+                                                @{item.name}
+                                            </Typography>
+                                        </div>
+                                    ),
+                                )}
                             </>
                         )}
                         <Accordion defaultExpanded>
@@ -112,7 +114,9 @@ export default function Panel(): React.JSX.Element {
                             <AccordionDetails>
                                 {asset && asset.assetMetadata && (
                                     <MetadataSection
-                                        labels={asset.assetMetadata.context.formData}
+                                        labels={
+                                            asset.assetMetadata.context.formData
+                                        }
                                     />
                                 )}
                             </AccordionDetails>
@@ -125,7 +129,10 @@ export default function Panel(): React.JSX.Element {
                             <AccordionDetails>
                                 {asset && asset.assetMetadata && (
                                     <MetadataSection
-                                        labels={asset.assetMetadata.creators.formData}
+                                        labels={
+                                            asset.assetMetadata.creators
+                                                .formData
+                                        }
                                     />
                                 )}
                             </AccordionDetails>
@@ -138,7 +145,10 @@ export default function Panel(): React.JSX.Element {
                             <AccordionDetails>
                                 {asset && asset.assetMetadata && (
                                     <MetadataSection
-                                        labels={asset.assetMetadata.taxonomy.formData}
+                                        labels={
+                                            asset.assetMetadata.taxonomy
+                                                .formData
+                                        }
                                     />
                                 )}
                             </AccordionDetails>
@@ -151,7 +161,10 @@ export default function Panel(): React.JSX.Element {
                             <AccordionDetails>
                                 {asset && asset.assetMetadata && (
                                     <MetadataSection
-                                        labels={asset.assetMetadata.provenance.formData}
+                                        labels={
+                                            asset.assetMetadata.provenance
+                                                .formData
+                                        }
                                     />
                                 )}
                             </AccordionDetails>

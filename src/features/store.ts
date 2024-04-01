@@ -16,4 +16,5 @@ const store = configureStore({
 
 sagaMiddleware.run(watchAsset);
 
+export type AppState = ReturnType<typeof store.getState>;
 export default store;

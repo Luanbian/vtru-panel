@@ -4,7 +4,7 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { Provider } from 'react-redux';
 import CssBaseline from '@mui/material/CssBaseline';
 import { Container } from '@mui/material';
-import makePanel from './core/factories/pages/panel.factory';
+import Router from './presentation/router';
 import { ThemeSettings } from './theme/Theme';
 
 import store from './features/store';
@@ -44,7 +44,7 @@ function App(): React.JSX.Element {
                         paddingBottom: '2rem',
                     }}
                 >
-                    {makePanel()}
+                    <Router />
                 </Container>
             </ProviderModernize>
         </Provider>

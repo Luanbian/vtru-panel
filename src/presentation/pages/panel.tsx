@@ -8,6 +8,7 @@ import {
 } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { IconCaretDown } from '@tabler/icons-react';
+import { useParams } from 'react-router-dom';
 import ActionButton from '../components/ActionButton';
 import MetadataSection from '../components/MetadataSection';
 import Avatar from '../components/Avatar';
@@ -15,6 +16,7 @@ import styles from '../styles/panel.module.css';
 import { actions } from '../../features/assets/slice';
 
 export default function Panel(): React.JSX.Element {
+    const { id } = useParams<{ id: string }>();
     const dispatch = useDispatch();
 
     const [size, setSize] = useState({
@@ -27,12 +29,10 @@ export default function Panel(): React.JSX.Element {
     useEffect(() => {
         if (asset._id === '') {
             dispatch(
-                actions.getAssetRequest({
-                    id: '6601adc7dc55cca07532d16f',
-                }),
+                actions.getAssetRequest({ id }),
             );
         }
-    }, [asset, dispatch]);
+    }, [asset, dispatch, id]);
 
     return (
         <main className={styles.main}>

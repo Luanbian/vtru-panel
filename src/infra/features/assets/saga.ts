@@ -4,7 +4,7 @@ import { AxiosError, type AxiosResponse } from 'axios';
 
 import { actions } from './slice';
 import { Asset } from './types';
-import makeObtainAssets from '../../core/factories/data/obtain.assets.factory';
+import makeObtainAssets from '../../../core/factories/data/obtain.assets.factory';
 
 const obtainAssets = async (id: string) => makeObtainAssets().perform({ id });
 

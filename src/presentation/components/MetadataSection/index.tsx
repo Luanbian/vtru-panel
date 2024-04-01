@@ -1,8 +1,5 @@
 import React from 'react';
-import { Icontext } from '../../../domain/entitties/context';
-import { Icreators } from '../../../domain/entitties/creators';
-import { Itaxonomy } from '../../../domain/entitties/taxonomy';
-import { Iprovenance } from '../../../domain/entitties/provenance';
+import { Icontext, Icreators, Iprovenance, Itaxonomy } from '../../../infra/features/assets/types';
 
 type MetadataSectionProps = {
     title?: string;

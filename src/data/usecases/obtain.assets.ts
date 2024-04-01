@@ -1,7 +1,7 @@
 import { HttpStatusCode } from '../../@types/http.response';
 import NotFoundError from '../../domain/errors/not.found';
 import UnexpectedError from '../../domain/errors/unexpected';
-import { ResponseAPI } from '../../features/types';
+import { ResponseAPI } from '../../infra/features/types';
 import { IHttpClient } from '../../infra/protocols/http.client.protocol';
 import { IobtainAssets, IobtainAssetsParams } from '../protocols/obtain.assets.protocol';
 

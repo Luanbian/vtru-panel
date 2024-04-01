@@ -7,8 +7,8 @@ import ActionButton from '../components/ActionButton';
 import MetadataSection from '../components/MetadataSection';
 import Avatar from '../components/Avatar';
 import styles from '../styles/panel.module.css';
-import { actions } from '../../features/assets/slice';
-import { AppState } from '../../features/store';
+import { AppState } from '../../infra/features/store';
+import { actions } from '../../infra/features/assets/slice';
 
 export default function Panel(): React.JSX.Element {
     const { id } = useParams<{ id: string }>();

@@ -5,7 +5,7 @@ import storage from 'redux-persist/lib/storage';
 
 import assetReducer from './assets/slice';
 import watchAsset from './assets/saga';
-import { PERSIST_KEY, PERSIST_VERSION } from '../constants/store';
+import { PERSIST_KEY, PERSIST_VERSION } from '../../utils/constants/store';
 
 const sagaMiddleware = createSagaMiddleware();
 

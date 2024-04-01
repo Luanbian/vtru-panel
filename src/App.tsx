@@ -6,9 +6,9 @@ import CssBaseline from '@mui/material/CssBaseline';
 import { Container } from '@mui/material';
 import { PersistGate } from 'redux-persist/integration/react';
 import Router from './presentation/router';
-import { ThemeSettings } from './theme/Theme';
+import { ThemeSettings } from './presentation/theme/Theme';
 
-import store, { persistor } from './features/store';
+import store, { persistor } from './infra/features/store';
 
 interface ProviderModernizeProps {
     children: React.ReactNode;

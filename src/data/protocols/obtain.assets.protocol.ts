@@ -1,4 +1,4 @@
-import { ResponseAPI } from '../../features/types';
+import { ResponseAPI } from "../../infra/features/types"
 
 export interface IobtainAssetsParams {
     id: string

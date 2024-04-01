@@ -4,10 +4,11 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { Provider } from 'react-redux';
 import CssBaseline from '@mui/material/CssBaseline';
 import { Container } from '@mui/material';
+import { PersistGate } from 'redux-persist/integration/react';
 import Router from './presentation/router';
 import { ThemeSettings } from './theme/Theme';
 
-import store from './features/store';
+import store, { persistor } from './features/store';
 
 interface ProviderModernizeProps {
     children: React.ReactNode;
@@ -38,15 +39,17 @@ function ProviderModernize({ children }: ProviderModernizeProps) {
 function App(): React.JSX.Element {
     return (
         <Provider store={store}>
-            <ProviderModernize>
-                <Container
-                    sx={{
-                        paddingBottom: '2rem',
-                    }}
-                >
-                    <Router />
-                </Container>
-            </ProviderModernize>
+            <PersistGate loading={null} persistor={persistor}>
+                <ProviderModernize>
+                    <Container
+                        sx={{
+                            paddingBottom: '2rem',
+                        }}
+                    >
+                        <Router />
+                    </Container>
+                </ProviderModernize>
+            </PersistGate>
         </Provider>
     );
 }

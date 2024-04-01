@@ -6,8 +6,8 @@ export default function Router(): React.JSX.Element {
     return (
         <BrowserRouter>
             <Routes>
-                <Route path="/preview/:id" element={<>{makePanel()}</>} />
-                <Route path="/:creatorName/:id" element={<>{makePanel()}</>} />
+                <Route path="/preview/:id/:seoTitle" element={<>{makePanel()}</>} />
+                <Route path="/:creatorName/:id/:seoTitle" element={<>{makePanel()}</>} />
             </Routes>
         </BrowserRouter>
     );
